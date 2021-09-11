@@ -10,3 +10,5 @@ batch = pyglet.graphics.Batch()
 asteroids_group = pyglet.graphics.OrderedGroup(0)
 player_group = pyglet.graphics.OrderedGroup(1)
 label_group = pyglet.graphics.OrderedGroup(2)
+gameover_group = pyglet.graphics.OrderedGroup(3)
+gameover_group.visible = False

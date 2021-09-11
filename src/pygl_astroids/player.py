@@ -2,7 +2,7 @@
 import math
 import pyglet
 from pyglet.window import key
-from .globalvars import BOARD_WIDTH, BOARD_HEIGHT, batch, player_group, label_group
+from .globalvars import BOARD_WIDTH, BOARD_HEIGHT, batch, player_group, gameover_group
 from .globaldefs import get_orientation
 from .vector import Vector2
 
@@ -101,18 +101,7 @@ class Player:
                     particle.delete()
                 self.particles = []
                 self.state = "dead"
-                global gameover_label
-                gameover_label = pyglet.text.Label(
-                    "GAME OVER\nPress 'space' to restart.",
-                    font_size=20,
-                    x=BOARD_WIDTH//2, y = BOARD_HEIGHT//2,
-                    width=BOARD_WIDTH,
-                    anchor_x="center", anchor_y="center",
-                    align="center",
-                    multiline=True,
-                    batch=batch,
-                    group=label_group
-                )
+                gameover_group.visible = True
                 return
             for i in range(len(self.particles)):
                 x = dist * math.cos((i/2) * math.pi + math.pi/4)

@@ -1,9 +1,8 @@
 import random
 import pyglet
 from pyglet.window import key
-from .globalvars import board, AST_GEN_FREQ, batch
+from .globalvars import board, AST_GEN_FREQ, batch, gameover_group
 from .globaldefs import reset_score
-from .labels import gameover_label
 from .player import Player
 from .asteroid import Asteroid
 from .bullet import Bullet
@@ -44,7 +43,7 @@ def on_key_press(symbol, modifiers):
         if player.state == "live":
             bullets.append(Bullet(player.position, player.angle))
         elif player.state == "dead":
-            gameover_label.delete()
+            gameover_group.visible = False
             reset_score()
             for asteroid in asteroids:
                 asteroid.shape.delete()
